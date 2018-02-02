@@ -6,9 +6,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= favicon_link_tag %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrap">
+    	<%= render 'shared/nav' %>
+      <div class="container">
+      	<%= render 'shared/flash_messages' %>
+        <%= yield %>
+      </div>
+    </div><!-- wrap -->
+    <%= render 'shared/footer' %>
   </body>
 </html>
