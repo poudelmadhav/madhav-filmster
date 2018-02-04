@@ -38,6 +38,9 @@ gem 'devise'
 # Use form in rails
 gem 'simple_form'
 
+# Use for phtoto uploading
+gem 'carrierwave'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

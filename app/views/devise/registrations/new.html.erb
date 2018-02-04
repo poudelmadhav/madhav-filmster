@@ -10,6 +10,8 @@
         <%= f.input :email, required: true, autofocus: true %>
 
         <%= f.input :username, required: true, autofocus: true %>
+
+        <%= f.input :avatar, autofocus: true, label: 'Profile Photo' %>
         
         <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
         <%= f.input :password_confirmation, required: true %>
