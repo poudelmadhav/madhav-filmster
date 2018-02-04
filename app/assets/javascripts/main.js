@@ -51,7 +51,7 @@ $(function(){
 	  }
 
 	  $.ajax(settings).done(function (response) {
-	    url = response["images"]["base_url"] + response["images"]["poster_sizes"][3];
+	    url = response["images"]["secure_base_url"] + response["images"]["poster_sizes"][3];
 	  });
 	  return url;
 	}
