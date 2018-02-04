@@ -26,7 +26,7 @@ $(function(){
 			data["results"].forEach(function(movie) {
 				htmlString += `<div class="row mp-margin">
 									<div class="col-sm-6">
-										"<img src=${movie["poster_path"] == null ? "https://raw.githubusercontent.com/poudelmadhav/madhav-filmster/master/app/assets/images/default_image.jpg" : imageUrl + movie["poster_path"]} data-id="${movie['id']}" class="movie_poster" />
+										<img src=${movie["poster_path"] == null ? "https://goo.gl/p8zDGq" : imageUrl + movie["poster_path"]} data-id="${movie['id']}" class="movie_poster" />
 									</div>
 									<div class="col-sm-6">
 										<h3><b>${movie["title"]}</b></h5>
@@ -79,7 +79,7 @@ $(function(){
 
 		htmlString += `<div class="row">
 							<div class="col-sm-6">
-								<img src=${data["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + data["poster_path"]} />
+								<img src=${data["poster_path"] == null ? "https://goo.gl/p8zDGq" : imageUrl + data["poster_path"]} />
 							</div>
 							<div class="col-sm-6">
 								<h1><b>${data["title"]}</b></h1>
