@@ -1,5 +1,6 @@
 $(function(){
 	let form = $('#movie-search');
+
 	form.submit(function(e){
 	  e.preventDefault();
 
@@ -23,7 +24,7 @@ $(function(){
 			htmlString = `<div class="alert alert-danger text-center" role="alert">No Data Found!</div>`;
 		} else {
 			data["results"].forEach(function(movie) {
-				htmlString += `<img src=${movie["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + movie["poster_path"]} />
+				htmlString += `<img src=${movie["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + movie["poster_path"]} data-id="${movie['id']}" class="movie_poster" />
 								<p>${movie["title"]}</p>
 								<p>${movie["overview"]}</p>`;
 			});
@@ -47,5 +48,39 @@ $(function(){
 	    url = response["images"]["base_url"] + response["images"]["poster_sizes"][3];
 	  });
 	  return url;
+	}
+
+	$('#movies').on('click', 'img.movie_poster', function(e){
+	  e.preventDefault();
+	  
+	  let id = $(e.target).data('id');
+
+	  $.ajax({
+	    url: 'https://api.themoviedb.org/3/movie/' + id + '?',
+	    data: { "api_key": "034661908a1116516775711b1e145da1" }
+	  })
+	  .done(function(data){
+	    displayMovie(data);
+	  })
+	});
+
+	function displayMovie(data) {
+		let htmlString = "";
+		let container = $("#movies");
+		let imageUrl = getBaseImageUrl();
+
+		container.empty();
+
+		htmlString += `<img src=${data["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + data["poster_path"]} />
+						<h1>${data["title"]}</h1>
+						<p><b>Summary</b>: ${data["overview"]}</p>
+						<p><b>Duration:</b> ${data["runtime"]} minutes</p>
+						<p><b>Status:</b> ${data["status"]}</p>
+						<p><b>Released Date:</b> ${data["release_date"]}</p>
+						<p><b>Popularity:</b> ${data["popularity"]}</p>
+						<p><b>Budget:</b> $${data["budget"]}</p>
+						<p><b>Website:</b> ${data["homepage"]}</p>`;
+
+		container.append(htmlString);	
 	}
 });
