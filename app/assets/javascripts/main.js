@@ -89,6 +89,8 @@ $(function(){
 								<p><b>Released Date:</b> ${data["release_date"]}</p>
 								<p><b>Popularity:</b> ${data["popularity"]}</p>
 								<p><b>Budget:</b> $${data["budget"]}</p>
+								<p><b>Average Vote:</b> ${data["vote_average"]}/10</p>
+								<p><b>Total Votes:</b> ${data["vote_count"]}</p>
 								<p><b>Website:</b> ${data["homepage"]}</p>
 							</div>
 						</div>`;
