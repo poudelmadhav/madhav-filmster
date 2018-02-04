@@ -24,9 +24,15 @@ $(function(){
 			htmlString = `<div class="alert alert-danger text-center" role="alert">No Data Found!</div>`;
 		} else {
 			data["results"].forEach(function(movie) {
-				htmlString += `<img src=${movie["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + movie["poster_path"]} data-id="${movie['id']}" class="movie_poster" />
-								<p>${movie["title"]}</p>
-								<p>${movie["overview"]}</p>`;
+				htmlString += `<div class="row mp-margin">
+									<div class="col-sm-6">
+										"<img src=${movie["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + movie["poster_path"]} data-id="${movie['id']}" class="movie_poster" />
+									</div>
+									<div class="col-sm-6">
+										<h3><b>${movie["title"]}</b></h5>
+										<p>${movie["overview"]}</p>
+									</div>
+								</div>`;
 			});
 		}
 
@@ -71,15 +77,21 @@ $(function(){
 
 		container.empty();
 
-		htmlString += `<img src=${data["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + data["poster_path"]} />
-						<h1>${data["title"]}</h1>
-						<p><b>Summary</b>: ${data["overview"]}</p>
-						<p><b>Duration:</b> ${data["runtime"]} minutes</p>
-						<p><b>Status:</b> ${data["status"]}</p>
-						<p><b>Released Date:</b> ${data["release_date"]}</p>
-						<p><b>Popularity:</b> ${data["popularity"]}</p>
-						<p><b>Budget:</b> $${data["budget"]}</p>
-						<p><b>Website:</b> ${data["homepage"]}</p>`;
+		htmlString += `<div class="row">
+							<div class="col-sm-6">
+								<img src=${data["poster_path"] == null ? "/assets/default_image.jpg" : imageUrl + data["poster_path"]} />
+							</div>
+							<div class="col-sm-6">
+								<h1><b>${data["title"]}</b></h1>
+								<p><b>Summary</b>: ${data["overview"]}</p>
+								<p><b>Duration:</b> ${data["runtime"]} minutes</p>
+								<p><b>Status:</b> ${data["status"]}</p>
+								<p><b>Released Date:</b> ${data["release_date"]}</p>
+								<p><b>Popularity:</b> ${data["popularity"]}</p>
+								<p><b>Budget:</b> $${data["budget"]}</p>
+								<p><b>Website:</b> ${data["homepage"]}</p>
+							</div>
+						</div>`;
 
 		container.append(htmlString);	
 	}
