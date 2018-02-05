@@ -25,10 +25,10 @@ $(function(){
 		} else {
 			data["results"].forEach(function(movie) {
 				htmlString += `<div class="row mp-margin">
-									<div class="col-sm-6">
+									<div class="col-xs-12 col-lg-6">
 										<img src=${movie["poster_path"] == null ? "https://goo.gl/p8zDGq" : imageUrl + movie["poster_path"]} data-id="${movie['id']}" class="movie_poster" />
 									</div>
-									<div class="col-sm-6">
+									<div class="col-xs-12 col-lg-6">
 										<h3><b>${movie["title"]}</b></h5>
 										<p>${movie["overview"]}</p>
 									</div>
@@ -78,10 +78,10 @@ $(function(){
 		container.empty();
 
 		htmlString += `<div class="row">
-							<div class="col-sm-6">
+							<div class="col-xs-12 col-md-6">
 								<img src=${data["poster_path"] == null ? "https://goo.gl/p8zDGq" : imageUrl + data["poster_path"]} />
 							</div>
-							<div class="col-sm-6">
+							<div class="col-xs-12 col-md-6">
 								<h1><b>${data["title"]}</b></h1>
 								<p><b>Summary</b>: ${data["overview"]}</p>
 								<p><b>Duration:</b> ${data["runtime"]} minutes</p>
