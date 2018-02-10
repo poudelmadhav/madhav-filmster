@@ -6,3 +6,4 @@
 #     https: false
 #   )
 # end
+Tmdb::Api.key("034661908a1116516775711b1e145da1")

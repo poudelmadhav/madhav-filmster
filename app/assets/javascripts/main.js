@@ -77,11 +77,11 @@ $(function(){
 
 		container.empty();
 
-		htmlString += `<div class="row">
-							<div class="col-xs-12 col-md-6">
+		htmlString += `<div class="row mp-margin">
+							<div class="col-xs-12 col-lg-6">
 								<img src=${data["poster_path"] == null ? "https://goo.gl/p8zDGq" : imageUrl + data["poster_path"]} />
 							</div>
-							<div class="col-xs-12 col-md-6">
+							<div class="col-xs-12 col-lg-6">
 								<h1><b>${data["title"]}</b></h1>
 								<p><b>Summary</b>: ${data["overview"]}</p>
 								<p><b>Duration:</b> ${data["runtime"]} minutes</p>
@@ -93,7 +93,15 @@ $(function(){
 								<p><b>Total Votes:</b> ${data["vote_count"]}</p>
 								<p><b>Website:</b> ${data["homepage"]}</p>
 							</div>
-						</div>`;
+						</div>
+
+						<form id="rating-form" action="/reviews" method="POST">
+							<input type="hidden" name="authenticity_token" value=${window._token} />
+							<input type="hidden" name="tmdb_id" value=${data["id"]} />
+							<textarea name= "review[comment]" class="form-control" placeholder="Your movie review"/>
+							<br />
+							<input type="submit" class="btn btn-success pull-right" />
+						</form>`;
 
 		container.append(htmlString);	
 	}
