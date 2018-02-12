@@ -11,6 +11,9 @@ module Filmster
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    # Load services
+    config.autoload_paths << Rails.root.join('services')
+
     config.generators do |g|
 	  g.helper false
 	  g.assets false
