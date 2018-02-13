@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create]
   
   def create
     @movie = MovieBuilder.new(tmdb_id: params[:tmdb_id]).build!
