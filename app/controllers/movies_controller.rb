@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
 	def index
-		@movies = Movie.all
+		@movies = Movie.all.order('updated_at DESC').includes(reviews: :user)
 	end
 
 	def show
