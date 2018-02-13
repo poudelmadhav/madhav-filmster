@@ -1,9 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  def index
-    @movies = Movie.all
-  end
-
+  
   def create
     @movie = MovieBuilder.new(tmdb_id: params[:tmdb_id]).build!
 
@@ -12,7 +9,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       flash[:success] = "Review saved!"
-      redirect_to root_path
+      redirect_to movie_path(@movie.id)
     else
       flash[:alert] = "Woops! It seems there was an error."
       redirect_to root_path
