@@ -51,13 +51,23 @@
 						<h4>No one has reviewed this movie yet!</h4>
 					<% end %>
 					<hr>
-					<form id="rating-form" action="/reviews" method="POST">
-						<input type="hidden" name="authenticity_token" value="token_value" />
-						<input type="hidden" name="tmdb_id" value="<%= @movie.tmdb_id %>" />
-						<textarea name= "review[comment]" class="form-control" placeholder="Your movie review"></textarea>
-						<br />
-						<input type="submit" class="btn btn-success pull-right" />
-					</form>
+					<% if user_signed_in? %>
+						<% if @movie.reviews.exists?(:user_id => current_user.id) %>
+						<% else %>
+						<form id="rating-form" action="/reviews" method="POST">
+							<input type="hidden" name="authenticity_token" value="token_value" />
+							<input type="hidden" name="tmdb_id" value="<%= @movie.tmdb_id %>" />
+							<textarea name= "review[comment]" class="form-control" placeholder="Your movie review"></textarea>
+							<br />
+							<input type="submit" class="btn btn-success pull-right" />
+						</form>
+						<% end %>
+					<% else %>
+					<div class="alert alert-danger alert-dismissable">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+						Please <%= link_to 'Log In', new_user_session_path, class: 'alert-link' %> to write your review!.
+					</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
