@@ -1,0 +1,9 @@
+<div class="text-center">
+	<% @movies.each do |movie| %>
+		<%= link_to movie_path(movie.id) do %>
+			<h1><b><%= movie.title %></b></h1>
+			<img src="https://image.tmdb.org/t/p/w342<%= movie.poster %>" class="mp-margin">
+		<% end %>
+		<br>
+	<% end %>
+</div>

@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  def index
+    @movies = Movie.all
+  end
 
   def create
     @movie = MovieBuilder.new(tmdb_id: params[:tmdb_id]).build!
