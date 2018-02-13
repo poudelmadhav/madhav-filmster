@@ -18,13 +18,12 @@
 				<div class="col-xs-12 col-md-6 padding-30">
 					<p class="text-justify"><%= @movie.plot %></p>
 					<p><b>Duration:</b> <%= @movie.runtime %> minutes</p>
-					<p><b>Status:</b> <%= @movie.released %></p>
 					<p><b>Released Date:</b> <%= @movie.release_date %></p>
 					<p><b>Popularity:</b> <%= @movie.popularity %></p>
 					<p><b>Budget:</b> $<%= @movie.budget %></p>
 					<p><b>Average Vote:</b> <%= @movie.average_vote %>/10</p>
 					<p><b>Total Votes:</b> <%= @movie.vote_count %></p>
-					<p><b>Website:</b> <%= @movie.homepage %></p>
+					<p><b>Website:</b> <a href="<%= @movie.homepage %>"><%= @movie.homepage %></a></p>
 				</div>
 				<div class="col-xs-12 col-md-6">
 					<h2>Reviews</h2>
