@@ -32,7 +32,8 @@ $(function(){
 										<h3><b>${movie["title"]}</b></h5>
 										<p>${movie["overview"]}</p>
 									</div>
-								</div>`;
+								</div>
+								<hr>`;
 			});
 		}
 
