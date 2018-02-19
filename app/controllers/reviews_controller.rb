@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   
+  def index
+    @movies = Movie.all.order('updated_at DESC').includes(reviews: :user).limit(20)
+    @reviews = Review.all.order('created_at DESC').includes(:user, :movie).limit(7)
+  end
+
   def create
     @movie = MovieBuilder.new(tmdb_id: params[:tmdb_id]).build!
 

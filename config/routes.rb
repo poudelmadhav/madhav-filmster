@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'movies' => 'movies#index'
 
+  resources :users, only: :show
+
   resources :movies do 
   	resources :reviews
   end
