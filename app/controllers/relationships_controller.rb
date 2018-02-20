@@ -25,9 +25,9 @@ class RelationshipsController < ApplicationController
 
 	def check_user
 		@user = User.find(params[:id])
-		if @user.id == current_user.id
-			flash[:alert] = "Woops! It seems there was an error."
-			redirect_to current_user, format: 'js'
+		if @user == current_user
+			flash[:alert] = "Opps! You are trying to follow yourself!"
+			render :js => "window.location.reload()"
 		end
 	end
 end
