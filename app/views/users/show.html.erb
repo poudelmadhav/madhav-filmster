@@ -10,12 +10,12 @@
     <div class="number-value"><%= @user.reviews.count %></div>
   </li>
 </ul>
-<div id="reviewed-movies">
+<div id="reviewed-movies" class="grid">
 </div>
 
 <script type="text/javascript">
   $(function(){
-    var $container = $('#reviewed-movies');
+    var $container = $('.grid');
     $container.imagesLoaded(function(){
       $container.masonry({
         itemSelector: '.grid-item',
@@ -31,13 +31,9 @@
 
   	    data["reviews"].forEach(function(review){
   	      htmlString += `<div class="grid-item">
-            							<a href="/movies/${review["movie"]["id"]}"><img src="https://image.tmdb.org/t/p/w185${review["movie"]["poster"]}" class="movie_poster"></a>
-      	      						 <div class="caption">
-                            <p>${review["movie"]["title"]}</p>
-                          </div>
+            							<img src="https://image.tmdb.org/t/p/w185${review["movie"]["poster"]}">  	      						
       	      					</div>`;
   	    });
-
   	    $("#reviewed-movies").append(htmlString);
       });
     });

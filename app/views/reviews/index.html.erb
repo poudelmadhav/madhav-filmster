@@ -27,16 +27,19 @@
     <div id="movies">
       <div class="grid">
         <% @movies.each do |movie| %>
-        <div class="grid-item">
+        <div class="grid-item mp-margin">
             
           <%= link_to movie_path(movie.id) do %>
+          <div class="movie-image">
             <% if movie.poster %>
-              <img src="https://image.tmdb.org/t/p/w185<%= movie.poster %>" class="mp-margin" class="img-responsive" alt="<%= movie.title %>" title="<%= movie.title %>">
+              <img src="https://image.tmdb.org/t/p/w185<%= movie.poster %>" class="img-responsive" alt="<%= movie.title %>" title="<%= movie.title %>">
             <% else %>
-              <img src="https://goo.gl/p8zDGq" class="mp-margin" class="img-responsive" alt="<%= movie.title %>" title="<%= movie.title %>">
+              <img src="https://goo.gl/p8zDGq" class="img-responsive" alt="<%= movie.title %>" title="<%= movie.title %>">
             <% end %>
-          
-                <!-- <p><%= movie.title %></p> -->
+          </div>
+          <div class="movie-name text-center">          
+            <p><%= movie.title %></p>
+          </div>
           <% end %>
         </div>
       <% end %>
