@@ -42,7 +42,7 @@
 							<tbody>		
 								<% @movie.reviews.each do |review| %>
 										<tr>
-											<td><%= review.user_username %></td>
+											<td><%= link_to review.user_username, user_path(review.user_id) %></td>
 											<td><%= review.comment %></td>
 										</tr>
 									
@@ -55,7 +55,9 @@
 					<% end %>
 					<hr>
 					<% if user_signed_in? %>
-						<% if @movie.reviews.exists?(:user_id => current_user.id) %>
+						<% if current_user.reviewed?(@movie) %>
+						<!--  OR -->
+						<!-- if @movie.reviews.exists?(:user_id => current_user.id) -->
 						<% else %>
 						<form id="rating-form" action="/reviews" method="POST">
 							<input type="hidden" name="authenticity_token" value="token_value" />

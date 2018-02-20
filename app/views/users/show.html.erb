@@ -13,42 +13,6 @@
 <div class="grid" id="reviewed-movies">
 </div>
 
-<!-- <script type="text/javascript">
-  $(function(){
-    var $container = $('.grid');
-    $container.imagesLoaded(function(){
-      $container.masonry({
-        itemSelector: '.grid-item',
-        columnWidth: 200
-      });
-    });
-
-  	$.ajax({
-        url: '/users/<%= @user.id %>.json'
-      })
-      .done(function(data){
-      	let htmlString = "";
-        htmlString += `<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>`;
-
-        let imageUrl = "https://image.tmdb.org/t/p/w185";
-
-  	    data["reviews"].forEach(function(review){
-  	      htmlString += `<div class="grid-item">
-                          <a href="/movies/${review["movie"]["id"]}">
-                            <div class="movie-image">
-              							 <img src=${review["movie"]["poster"] == null ? "https://goo.gl/p8zDGq" : imageUrl + review["movie"]["poster"]} >
-                            </div>
-                            <div class="movie-name text-center">
-                              <p>${review["movie"]["title"]}</p>
-                            </div>
-                          </a>
-      	      					</div>`;
-  	    });
-        htmlString += `</div>`;
-  	    $("#reviewed-movies").append(htmlString);
-      });
-    });
-</script> -->
 <script type="text/javascript">
   var $grid = $('.grid').masonry({
     // options
@@ -62,14 +26,12 @@
     $grid.masonry('layout');
   });
 
-  let userData = {};
   let user_id = <%= @user.id %>;
   $.ajax({
     url: '/users/' + user_id + '.json',
     type: 'GET'
   })
   .done(function(data){
-    userData = data;
     displayReviews(data);
   });
 
@@ -80,7 +42,6 @@
     let imageUrl = "https://image.tmdb.org/t/p/w154";
 
     container.empty();
-    console.log(data);
     //check if the API responds back with an error i.e. no data found.
     if (data["reviews"].length == 0) {
       htmlString = `<div class="alert alert-danger text-center" role="alert">No Data Found!</div>`

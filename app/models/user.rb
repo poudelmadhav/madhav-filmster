@@ -8,4 +8,12 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :reviews
+
+  def reviewed?(movie)
+    reviews.each do |review|
+      return true if review.movie_id == movie.id
+    end
+
+    return false
+  end
 end
