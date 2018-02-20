@@ -1,24 +1,10 @@
-<%= image_tag @user.avatar, class: 'prof-pic-lg' %><h1 class="text-center">
+<%= image_tag @user.avatar, class: 'prof-pic-lg' %>
 
-<%= @user.username %></h1>
+<h1 class="text-center"><%= @user.username %></h1>
 
 <p class="text-center lead"><%= @user.introduction %></p>
 
-<ul class="user-stats">
-  <li>
-    <div class="number-label"><%= "Review".pluralize(@user.reviews.count) %></div>
-    <div class="number-value"><%= @user.reviews.count %></div>
-  </li>
-  <li id="user-followers">
-    <div class="number-label"><%= "Follower".pluralize(@user.followed_relationships.count) %></div>
-    <div class="number-value"><%= @user.followed_relationships.count %></div>
-  </li>
-  <li id="user-following">
-    <div class="number-label"><%= "Following".pluralize(@user.following_relationships.count) %></div>
-    <div class="number-value"><%= @user.following_relationships.count %></div>    
-  </li>
-</ul>
-<div id="follow_container_<%= @user.id %>" class="follow-button mp-margin text-center">
+<div id="follow_container_<%= @user.id %>" class="mp-margin text-center">
   <%= render partial: 'follow', locals: {user: @user} %>
 </div>
 

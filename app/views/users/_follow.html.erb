@@ -1,5 +1,22 @@
-<% if current_user.following?(user) %>
-	<%= link_to "Following", relationship_path(id: user.id), class: 'btn btn-success btn-lg', method: :delete, remote: true %>
-<% else %>
-	<%= link_to "Follow", relationships_path(id: user.id), class: 'btn btn-warning btn-lg', method: :post, remote: true %>
+<ul class="user-stats">
+  <li>
+    <div class="number-label"><%= "Review".pluralize(@user.reviews.count) %></div>
+    <div class="number-value"><%= @user.reviews.count %></div>
+  </li>
+  <li id="user-followers">
+    <div class="number-label"><%= "Follower".pluralize(@user.followed_relationships.count) %></div>
+    <div class="number-value"><%= @user.followed_relationships.count %></div>
+  </li>
+  <li id="user-following">
+    <div class="number-label"><%= "Following".pluralize(@user.following_relationships.count) %></div>
+    <div class="number-value"><%= @user.following_relationships.count %></div>    
+  </li>
+</ul>
+
+<% if user != current_user && user_signed_in? %>
+	<% if current_user.following?(user) %>
+		<%= link_to "Following", relationship_path(id: user.id), class: 'btn btn-success btn-lg', method: :delete, remote: true %>
+	<% else %>
+		<%= link_to "Follow", relationships_path(id: user.id), class: 'btn btn-warning btn-lg', method: :post, remote: true %>
+	<% end %>
 <% end %>
