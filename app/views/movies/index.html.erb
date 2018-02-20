@@ -19,7 +19,7 @@
     <hr>
     <% @reviews.each do |review| %>
       <%= review.comment %> <br><br>
-      <%= review.user_username %> | <%= link_to review.movie_title, movie_path(review.movie_id) %>
+      <%= link_to review.user_username, user_path(review.user_id) %> | <%= link_to review.movie_title, movie_path(review.movie_id) %>
       <hr>
     <% end %>
   </div>
