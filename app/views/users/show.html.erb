@@ -6,10 +6,22 @@
 
 <ul class="user-stats">
   <li>
-    <div class="number-label">Reviews</div>
+    <div class="number-label"><%= "Review".pluralize(@user.reviews.count) %></div>
     <div class="number-value"><%= @user.reviews.count %></div>
   </li>
+  <li id="user-followers">
+    <div class="number-label"><%= "Follower".pluralize(@user.followed_relationships.count) %></div>
+    <div class="number-value"><%= @user.followed_relationships.count %></div>
+  </li>
+  <li id="user-following">
+    <div class="number-label"><%= "Following".pluralize(@user.following_relationships.count) %></div>
+    <div class="number-value"><%= @user.following_relationships.count %></div>    
+  </li>
 </ul>
+<div id="follow_container_<%= @user.id %>" class="follow-button mp-margin text-center">
+  <%= render partial: 'follow', locals: {user: @user} %>
+</div>
+
 <div class="grid" id="reviewed-movies">
 </div>
 
@@ -44,7 +56,7 @@
     container.empty();
     //check if the API responds back with an error i.e. no data found.
     if (data["reviews"].length == 0) {
-      htmlString = `<div class="alert alert-danger text-center" role="alert">No Data Found!</div>`
+      htmlString = `<div class="alert alert-danger text-center" role="alert">This user has not reviewed any movies!</div>`
     }
     else{
       data["reviews"].forEach(function(review){

@@ -44,8 +44,6 @@ gem 'simple_form'
 # Use for phtoto uploading
 gem 'carrierwave'
 
-# Use following interface
-gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
