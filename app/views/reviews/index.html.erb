@@ -50,12 +50,17 @@
 
 <script type="text/javascript">
   $(function(){
-    var $container = $('.grid');
-    $container.imagesLoaded(function(){
-      $container.masonry({
-        itemSelector: '.grid-item',
-        columnWidth: 200
-      });
+    var $grid = $('.grid').masonry({
+      // options
+      itemSelector: '.grid-item',
+      // use element for option
+      columnWidth: 200,
+      percentPosition: true
+    });
+
+    // layout Masonry after each image loads
+    $grid.imagesLoaded().progress( function() {
+      $grid.masonry('layout');
     });
   });
 </script>
