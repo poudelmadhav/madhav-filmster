@@ -17,8 +17,8 @@
           <% if current_user.avatar? %>
             <span id="target-photo mp-margin" class="header_pic_edit"><%= image_tag current_user.avatar, class: 'mp-margin' %></span><br>
           <% end %>
-          <button type="button" class="btn mp-margin" data-toggle="collapse" data-target="#demo">Change Photo</button>
-          <div id="demo" class="collapse">
+          <button type="button" class="btn mp-margin" data-toggle="collapse" data-target="#photo-choose">Change Photo</button>
+          <div id="photo-choose" class="collapse">
             <%= f.input :avatar, autofocus: true, label: 'Choose Photo' %>
           </div>
         </div>
@@ -29,8 +29,8 @@
         
         <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
 
-        <button type="button" class="btn mp-margin" data-toggle="collapse" data-target="#demo">Click here if you want change your password</button>
-        <div id="demo" class="collapse">
+        <button type="button" class="btn mp-margin" data-toggle="collapse" data-target="#password">Click here if you want change your password</button>
+        <div id="password" class="collapse">
           <%= f.input :password, autocomplete: "off", label: 'New Password', required: false %>
           <%= f.input :password_confirmation, required: false %>
         </div>
