@@ -34,3 +34,17 @@
     }
   }
 }
+
+/* image loading while uploading */
+.header_pic_edit img{
+  border-radius: 10px;
+  height: 36%;
+  width: 36%;
+  object-fit: cover;
+}
+
+#target-photo img {
+  border-radius: 10px;
+  height: 36%;
+  width: 36%;
+}

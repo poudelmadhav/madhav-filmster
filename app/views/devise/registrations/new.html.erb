@@ -11,7 +11,11 @@
 
         <%= f.input :username, required: true, autofocus: true %>
 
-        <%= f.input :avatar, autofocus: true, label: 'Profile Photo' %>
+        <div  id="pictureInput" class="field mp-margin">
+          <%= f.input :avatar, autofocus: true, label: 'Profile Photo' %>
+        </div>
+
+        <div id="target-photo" class="mp-margin"></div>
         
         <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
         <%= f.input :password_confirmation, required: true %>
@@ -26,3 +30,22 @@
   </div>
  <div class="col-sm-4"></div>
 </div>
+
+<!-- This is needed for image preview -->
+<script type="text/javascript">
+  $(function() {
+    $('#pictureInput').on('change', function(event) {
+      var files = event.target.files;
+      var image = files[0]
+      var reader = new FileReader();
+      reader.onload = function(file) {
+        var img = new Image();
+        console.log(file);
+        img.src = file.target.result;
+        $('#target-photo').html(img);
+      }
+      reader.readAsDataURL(image);
+      console.log(files);
+    });
+  });
+</script>
