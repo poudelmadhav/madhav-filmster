@@ -3,7 +3,6 @@ class RelationshipsController < ApplicationController
 	before_action :check_user
 
 	def create
-		@user = User.find(params[:id])
 		current_user.follow(@user)
 
 		respond_to do |format|

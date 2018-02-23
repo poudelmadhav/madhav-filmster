@@ -7,6 +7,29 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
   mount_uploader :avatar, AvatarUploader
 
+  # login using username or email
+  attr_accessor :login
+
+  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+
+  validate :validate_username
+
+  def validate_username
+    if User.where(email: username).exists?
+      errors.add(:username, :invalid)
+    end
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
+  # login using username or email finishes
+
   has_many :reviews, dependent: :destroy
 
   has_many :following_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent: :destroy
