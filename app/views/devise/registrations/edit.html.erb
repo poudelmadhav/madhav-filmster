@@ -13,13 +13,19 @@
 
         <%= f.input :introduction, autofocus: true %>
         <div id="pictureInput" class="field">
-          <%= f.label 'Profile Photo' %><br>
+          <%= f.label 'Current Profile Photo' %><br>
           <% if current_user.avatar? %>
             <span id="target-photo mp-margin" class="header_pic_edit"><%= image_tag current_user.avatar, class: 'mp-margin' %></span><br>
+          <% else %>
+            <div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              You have not added your profile photo yet! Please, add your profile photo.
+            </div>
           <% end %>
-          <button type="button" class="btn mp-margin" data-toggle="collapse" data-target="#photo-choose">Change Photo</button>
+          <button type="button" class="btn mp-margin" data-toggle="collapse" data-target="#photo-choose">Upload New Photo</button>
           <div id="photo-choose" class="collapse">
             <%= f.input :avatar, autofocus: true, label: 'Choose Photo' %>
+            <div id="target-photo" class="mp-margin"></div>
           </div>
         </div>
 
