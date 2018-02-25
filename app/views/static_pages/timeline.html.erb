@@ -1,4 +1,11 @@
-<h1 class="text-center">Timeline</h1>
+<% if user_signed_in? %>
+  <h1 class="text-center">Timeline</h1>
+<% else %>
+  <div class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    Please <a href="/users/sign_in" class="alert-link">sign in</a> or <a href="/users/sign_up" class="alert-link">sign up</a> to see the review of the users who follow here!
+  </div>
+<% end %>
 
 <div id="timeline-reviews">
 </div>
