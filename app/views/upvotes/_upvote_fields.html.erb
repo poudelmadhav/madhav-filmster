@@ -1,0 +1,7 @@
+<% if Upvote.find_by(user: current_user, review: review) %>
+  <%= link_to '<span class="glyphicon glyphicon-chevron-up" aria-hidden="true" style= "color: blue;"></span>'.html_safe, upvote_path(review),method: :delete, remote: true %>
+<% else %>
+  <%= link_to '<span class="glyphicon glyphicon-chevron-up" aria-hidden="true" style= "color: black;"></span>'.html_safe,upvotes_path(review_id: review.id), method: :post, remote: true %>
+<% end %>
+
+<%= review.upvotes.count %>

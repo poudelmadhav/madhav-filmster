@@ -53,4 +53,7 @@ class User < ApplicationRecord
   def following?(user)
     following_relationships.exists?(followed_id: user.id)
   end
+
+  # Upvoting feature
+  has_many :upvotes, through: :reviews, dependent: :destroy
 end
