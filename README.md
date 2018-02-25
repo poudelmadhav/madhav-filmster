@@ -1,24 +1,6 @@
-# README
+# Filmster
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This in a online movie review portal. You can write your reviews by searching your desired movie. Use have used the api of [TheMovieDb](https://www.themoviedb.org/) for the movie database.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is live at:
+https://madhav-filmster.herokuapp.com
