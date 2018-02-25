@@ -24,6 +24,9 @@ gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+# manage environment variables
+gem "figaro"
+
 # Use the movie database
 gem 'themoviedb-api'
 # Use Redis adapter to run Action Cable in production

@@ -5,6 +5,8 @@ class RelationshipsController < ApplicationController
 	def create
 		current_user.follow(@user)
 
+		UserMailer.follow_email(@user).deliver_now
+
 		respond_to do |format|
             format.html { redirect_to user_path(@user.id) }
             format.js {}
