@@ -43,7 +43,7 @@
 							<tbody>		
 								<% @movie.reviews.each do |review| %>
 										<tr>
-											<td id="upvotes_field">
+											<td id="upvotes_field<%= review.id %>">
 												<%= render partial: 'upvotes/upvote_fields', locals: {review: review, current_user: current_user} %>
 											</td>
 											<td><%= link_to review.user_username, user_path(review.user_id) %></td>
