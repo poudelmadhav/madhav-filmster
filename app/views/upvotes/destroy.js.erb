@@ -1,1 +1,1 @@
-$('#upvotes_field<%= review.id %>').empty().append("<%= escape_javascript render(partial: 'upvote_fields', locals: {review: @review}) %>");
+$('#upvotes_field<%= @review.id %>').empty().append("<%= escape_javascript render(partial: 'upvote_fields', locals: {review: @review}) %>");
