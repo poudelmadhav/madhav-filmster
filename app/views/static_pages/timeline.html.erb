@@ -15,7 +15,13 @@
 
     function displayReviews(data){
       let container = $("#timeline-reviews");
-      let htmlString = "<hr>";
+      let htmlString = "";
+
+      //insert panel
+      htmlString += `<div class="panel panel-danger">
+      					<div class="panel-body">`;
+
+      let imageUrl = "https://image.tmdb.org/t/p/w154"
 
       container.empty();
       //check if the API responds back with an error i.e. no data found.
@@ -24,10 +30,21 @@
       } else {
 	        data["reviews"].forEach(function(review){
 	          htmlString += `
-	                        <p>${review["user"]["username"]} | ${review["comment"]}</p><hr>
+	          				<div class="row">
+		          				<div class="col-xs-12 col-sm-9">
+		                        	<p><a href="users/${review["user"]["id"]}">${review["user"]["username"]}</a> reviewed <a href="movies/${review["movie"]["id"]}">${review["movie"]["title"]}</a>: "${review["comment"]}"</p>
+		                        </div>
+		                        <div class="col-xs-12 col-sm-3">
+		                        	<img src=${review["movie"]["poster"] == null ? "https://goo.gl/p8zDGq" : imageUrl + review["movie"]["poster"]} >
+		                        </div>
+		                    </div><hr>
 	                        `
 	        });
 	    }
+	    // close panel
+	    htmlString += `
+	    			</div>
+	    		</div>`;
 	    container.append(htmlString);
   	}
   });

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get "timeline" => "static_pages#timeline"
 
-  get 'user/timeline', to: 'users#timeline'
+  get 'user/timeline', to: 'users#timeline' # for timeline.json
 
   root 'movies#index'
 end
