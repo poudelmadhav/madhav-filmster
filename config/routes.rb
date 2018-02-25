@@ -13,5 +13,9 @@ Rails.application.routes.draw do
 
   resources :reviews
 
+  get "timeline" => "static_pages#timeline"
+
+  get 'user/timeline', to: 'users#timeline'
+
   root 'movies#index'
 end

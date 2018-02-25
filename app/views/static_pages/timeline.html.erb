@@ -1,0 +1,34 @@
+<h1 class="text-center">Timeline</h1>
+
+<div id="timeline-reviews">
+</div>
+
+<script type="text/javascript">
+  $(function(){
+  	$.ajax({
+      url: '/user/timeline.json',
+      type: 'GET'
+    })
+    .done(function(data){
+      displayReviews(data);
+    });
+
+    function displayReviews(data){
+      let container = $("#timeline-reviews");
+      let htmlString = "<hr>";
+
+      container.empty();
+      //check if the API responds back with an error i.e. no data found.
+      if (data["reviews"].length == 0) {
+        htmlString = `<div class="alert alert-danger text-center" role="alert">The user you are following havenot reviewd any movies!</div>`
+      } else {
+	        data["reviews"].forEach(function(review){
+	          htmlString += `
+	                        <p>${review["user"]["username"]} | ${review["comment"]}</p><hr>
+	                        `
+	        });
+	    }
+	    container.append(htmlString);
+  	}
+  });
+</script>
