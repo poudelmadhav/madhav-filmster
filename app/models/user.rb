@@ -56,4 +56,10 @@ class User < ApplicationRecord
 
   # Upvoting feature
   has_many :upvotes, through: :reviews, dependent: :destroy
+
+  # send welcome email if user sign up
+  after_create :send_welcome_email
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_later
+  end
 end
