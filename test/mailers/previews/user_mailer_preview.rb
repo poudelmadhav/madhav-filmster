@@ -4,7 +4,7 @@ class UserMailerPreview < ActionMailer::Preview
 		UserMailer.welcome_email(User.first)
 	end
 
-	def welcome_email
+	def follow_email
 		UserMailer.follow_email(User.first)
 	end
 end
