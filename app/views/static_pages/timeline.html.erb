@@ -39,9 +39,9 @@
 	          htmlString += `
 	          				<div class="row">
 		          				<div class="col-xs-12 col-sm-9">
-		                        	<p><a href="users/${review["user"]["id"]}">${review["user"]["username"]}</a> reviewed <a href="movies/${review["movie"]["id"]}">${review["movie"]["title"]}</a>: "${review["comment"]}"</p>
+		                        	<p><a href="users/${review["user"]["id"]}">${review["user"]["username"]}</a> reviewed <a href="movies/${review["movie"]["tmdb_id"]}">${review["movie"]["title"]}</a>: "${review["comment"]}"</p>
 		                        </div>
-		                        <div class="col-xs-12 col-sm-3">
+		                        <div class="col-xs-12 col-sm-3 my-img">
 		                        	<img src=${review["movie"]["poster"] == null ? "https://goo.gl/p8zDGq" : imageUrl + review["movie"]["poster"]} >
 		                        </div>
 		                    </div><hr>

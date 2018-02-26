@@ -51,7 +51,7 @@
         data["reviews"].forEach(function(review){
           htmlString += `
                         <div class="grid-item mp-margin">
-                          <a href="/movies/${review["movie"]["id"]}">
+                          <a href="/movies/${review["movie"]["tmdb_id"]}">
                             <div class="movie-image">
                              <img src=${review["movie"]["poster"] == null ? "https://goo.gl/p8zDGq" : imageUrl + review["movie"]["poster"]} >
                             </div>
