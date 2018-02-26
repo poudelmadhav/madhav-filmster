@@ -53,3 +53,10 @@
 #timeline-reviews .my-img img {
   width: 154px;
 }
+
+.prof_pic_small img {
+  border-radius: 50%;
+  height: 28%;
+  width: 28%;
+  object-fit: cover;
+}

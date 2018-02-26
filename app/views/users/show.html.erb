@@ -1,4 +1,8 @@
-<%= image_tag @user.avatar, class: 'prof-pic-lg' %>
+<% if @user.avatar? %>
+  <%= image_tag @user.avatar, class: 'prof-pic-lg' %>
+<% else %>
+  <%= image_tag "https://goo.gl/QVQC1M", class: 'prof-pic-lg' %>
+<% end %>
 
 <h1 class="text-center"><%= @user.username %></h1>
 
@@ -96,8 +100,8 @@
                               <div class="panel panel-success">
                                 <div class="panel-body">
                                   <a href="/users/${userInfo["user"]["id"]}">
-                                    <div class="row">
-                                      <img class="col-sm-4" src="${userInfo["user"]["avatar_url"]}"><p class="col-sm-4">${userInfo["user"]["username"]}</p>
+                                    <div class="row prof_pic_small">
+                                      <img class="col-xs-4" src=${userInfo["user"]["avatar_url"] == null ? "https://goo.gl/QVQC1M" : userInfo["user"]["avatar_url"]}><p class="col-xs-4">${userInfo["user"]["username"]}</p>
                                     </div>
                                   </a>
                                 </div>
@@ -123,8 +127,8 @@
                             <div class="panel panel-success">
                               <div class="panel-body">
                                 <a href="/users/${userInfo["user"]["id"]}">
-                                  <div class="row">
-                                    <img class="col-sm-4" src="${userInfo["user"]["avatar_url"]}"><p class="col-sm-4">${userInfo["user"]["username"]}</p>
+                                  <div class="row prof_pic_small">
+                                    <img class="col-xs-4" src=${userInfo["user"]["avatar_url"] == null ? "https://goo.gl/QVQC1M" : userInfo["user"]["avatar_url"]}><p class="col-xs-4">${userInfo["user"]["username"]}</p>
                                   </div>
                                 </a>
                               </div>
