@@ -90,10 +90,14 @@
       } else {
           userData.following_relationships.forEach(function(userInfo){
             htmlString += `
-                          <div class="following_users">
-                            <a href="/users/${userInfo["user"]["id"]}">
-                              <p>${userInfo["user"]["username"]}</p>
-                            </a>
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-4"></div>
+                            <div class="col-xs-12 col-sm-4">
+                              <a href="/users/${userInfo["user"]["id"]}">
+                                <p>${userInfo["user"]["username"]}</p>
+                              </a>
+                            </div>
+                            <div class="col-xs-12 col-sm-4"></div>
                           </div>`;
         });
       }
@@ -107,10 +111,14 @@
       else{
         userData.followed_relationships.forEach(function(userInfo){
           htmlString += `
-                        <div class="following_users">
-                          <a href="/users/${userInfo["user"]["id"]}">
-                            <p>${userInfo["user"]["username"]}</p>
-                          </a>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-4"></div>
+                          <div class="col-xs-12 col-sm-4">
+                            <a href="/users/${userInfo["user"]["id"]}">
+                              <p>${userInfo["user"]["username"]}</p>
+                            </a>
+                          </div>
+                          <div class="col-xs-12 col-sm-4"></div>
                         </div>`;
         });
       }
