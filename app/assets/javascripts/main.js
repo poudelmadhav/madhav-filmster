@@ -18,7 +18,10 @@ $(function(){
 
 		let htmlString = "";
 		let imageUrl = getBaseImageUrl();
-
+		if (($(window).width()) < 992) {
+			$("#latest-reviews").empty();
+			console.log($(window).width());
+		}
 		container.empty();
 		if (data["results"].length == 0) {
 			htmlString = `<div class="alert alert-danger text-center" role="alert">No Data Found!</div>`;
