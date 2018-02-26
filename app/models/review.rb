@@ -9,4 +9,7 @@ class Review < ApplicationRecord
 
   # voting feature
   has_many :upvotes, dependent: :destroy
+
+  # 7 recent reviews
+  scope :recent, -> { order("created_at DESC").limit(7) }
 end

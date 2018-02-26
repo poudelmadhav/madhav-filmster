@@ -18,7 +18,7 @@
     <div id="latest-reviews">
       <h3>Latest Reviews</h3>
       <hr>
-      <% @reviews.each do |review| %>
+      <% @recent_reviews.each do |review| %>
         <%= review.comment %> <br><br>
         <%= link_to review.user_username, user_path(review.user_id) %> | <%= link_to review.movie_title, movies_path(review.movie_tmdb_id) %>
         <hr>
