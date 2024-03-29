@@ -19,6 +19,7 @@
 .byebug_history
 
 /temp.html.erb
+/public/uploads
 
 # Ignore application configuration
 /config/application.yml
