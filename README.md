@@ -4,3 +4,21 @@ This in a online movie review portal. You can write your reviews by searching yo
 
 This is live at:
 https://madhav-filmster.herokuapp.com
+
+
+# Docker build
+
+### Set required environment variables
+export SECRET_KEY_BASE="$(rails secret)"
+export DATABASE_URL="postgresql://postgres:password@localhost:5432/filmster_development"
+export TMDB_API_KEY="TMDB_API_KEY"
+
+### Build image
+docker build -t madhav-filmster --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE .
+
+### Run container
+docker run --rm -it -p 3000:3000 --name=filmster-container \
+  -e DATABASE_URL=$DATABASE_URL \
+  -e SECRET_KEY_BASE=$RAILS_SECRET_KEY \
+  -e TMDB_API_KEY=$TMDB_API_KEY \
+  madhav-filmster
