@@ -57,7 +57,10 @@ RUN apt-get update -qq && \
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
+COPY --from=build /usr/local/node /usr/local/node
 COPY --from=build /rails /rails
+
+ENV PATH=$PATH:/usr/local/node/bin
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
