@@ -10,6 +10,7 @@
 /.env*
 !/.env*.erb
 
+
 # Ignore all default key files.
 /config/master.key
 /config/credentials/*.key
@@ -35,3 +36,7 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 /public/assets
+/public/uploads
+
+# Ignore application configuration
+/config/application.yml
