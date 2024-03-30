@@ -8,13 +8,13 @@ https://madhav-filmster.herokuapp.com
 
 # Docker build
 
+### Build image
+docker build -t madhav-filmster .
+
 ### Set required environment variables
 export SECRET_KEY_BASE="$(rails secret)"
 export DATABASE_URL="postgresql://postgres:password@localhost:5432/filmster_development"
 export TMDB_API_KEY="TMDB_API_KEY"
-
-### Build image
-docker build -t madhav-filmster --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE .
 
 ### Run container
 docker run --rm -it -p 3000:3000 --name=filmster-container \

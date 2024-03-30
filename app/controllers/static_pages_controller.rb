@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
     	@movies.results.each { |movie| MovieBuilder.new(tmdb_id: movie.id).build!}
     	@recent_reviews = Review.recent
 	end
-	
+
 	def timeline
 	end
 end
