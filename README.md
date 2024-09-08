@@ -5,6 +5,8 @@ This in a online movie review portal. You can write your reviews by searching yo
 This is live at:
 https://filmster.paudelmadhav.com.np
 
+### How it looks?
+![image](https://github.com/user-attachments/assets/5f525f1c-b3f8-4f07-9c27-54910eab4b62)
 
 # Docker build
 

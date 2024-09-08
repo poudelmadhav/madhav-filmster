@@ -89,18 +89,20 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Mailer settings
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  # SMTP settings for gmail
+  config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.gmail.com",
-   :port                 => 587,
-   :domain               => "mail.google.com",
-   :user_name            => ENV['gmail_username'],
-   :password             => ENV['gmail_password'],
-   :authentication       => "plain",
-   :enable_starttls_auto => true
+    user_name: ENV.fetch('SMTP_USERNAME', nil),
+    password: ENV.fetch('SMTP_PASSWORD', nil),
+    domain: 'poudelmadhav.com.np',
+    address: 'smtp-relay.brevo.com',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { :host => 'https://madhav-filmster.herokuapp.com' }
+
+  config.action_mailer.default_url_options = { :host => 'https://filmster.paudelmadhav.com.np' }
 end

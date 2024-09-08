@@ -1,9 +1,9 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@madhav-filmster.herokuapp.com'
- 
+  default from: 'Filmster <noreply@poudelmadhav.com.np>'
+
   def welcome_email(user)
     @user = user
-    @url  = 'https://madhav-filmster.herokuapp.com/users/sign_in'
+    @url  = 'https://filmster.paudelmadhav.com.np/users/sign_in'
     mail(to: @user.email, subject: 'Welcome to madhav-filmster!')
   end
 
